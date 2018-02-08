@@ -1,4 +1,5 @@
 class universe():
+	
 	def matrix(firstw,secondw): #kelimelerdeki aynı harfleri atmanın bir yolunu bul setler yeterince seksi degil
 #		f = set(firstw)
 #		s = set(secondw)
@@ -12,6 +13,8 @@ class universe():
 		h = len(secondwv) 
 		#Matrix = [[0 for x in range(w)] for y in range(h)]
 		Endic = {}
+		#Endiccoz = {}
+		global Endiccoz
 		# kelimexkelime buyuklugunde matris oluştur
 		#print(Matrix)
 		#print(Matrix[4][6],firstwv[4],secondwv[6])
@@ -28,7 +31,7 @@ class universe():
 			#print(len(alfabelist))
 
 			while(i < w):
-				#Endic[str(firstwv[a]+secondwv[i])] = alfabelist[acounter]
+				Endiccoz[str(firstwv[a]+secondwv[i])] = alfabelist[acounter] # please spirit of software spare me
 				Endic[alfabelist[acounter]] = str(firstwv[a]+secondwv[i])
 				acounter = acounter + 1
 
@@ -49,11 +52,15 @@ class universe():
 	def coz(matris,sifreli):
 		sif = str(sifreli)
 		n = 2
+		sonlist = []
 		cozlist = [sif[i:i+n] for i in range(0, len(sif), n)] # thank you stack overflow
-		
-
+		for i in cozlist:
+			sonlist.append(Endiccoz[i])
+		sonlist = ''.join(sonlist)
 		print(cozlist)
-
+		print(sonlist)
+		return sonlist
+Endiccoz = {}
 word1 = "dalyrkDALYRK"
 word2 = "dalyrkDALYRK"
 a = universe.matrix(word1,word2)
